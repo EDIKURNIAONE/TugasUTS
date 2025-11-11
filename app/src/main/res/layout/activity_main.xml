@@ -17,17 +17,30 @@
         android:textSize="24sp" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Email" />
+        android:text="Username" />
 
     <EditText
-        android:id="@+id/editEmail"
+        android:id="@+id/editEmail2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:inputType="textEmailAddress" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email" />
+
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:inputType="textEmailAddress" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -36,7 +49,7 @@
 
     <EditText
         android:id="@+id/editFirstName"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Nama Depan"
         android:inputType="textPersonName" />
@@ -48,7 +61,7 @@
 
     <EditText
         android:id="@+id/editLastName"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:hint="Nama Belakang"
@@ -66,11 +79,26 @@
         android:layout_marginBottom="16dp"
         android:inputType="textPassword" />
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ketik Ulang Password" />
+
+    <EditText
+        android:id="@+id/editPassword2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:inputType="textPassword" />
+
     <Button
         android:id="@+id/btnCancel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Batal" />
+        android:text="Batal"
+        android:textColor="#FFFFFF"
+        android:textColorLink="#E91E63" />
 
     <Button
         android:id="@+id/btnSubmit"
