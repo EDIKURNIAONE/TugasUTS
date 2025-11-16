@@ -4,8 +4,9 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="16sp"
+    android:layout_margin="16dp"
     android:orientation="vertical"
+    android:padding="8dp"
     tools:context=".MainActivity">
 
     <TextView
@@ -14,58 +15,73 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="24dp"
         android:text="Formulir Pendaftaran"
-        android:textSize="24sp" />
+        android:textColor="#FF5722"
+        android:textSize="24sp"
+        android:textStyle="bold|italic" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Username" />
 
     <EditText
-        android:id="@+id/editEmail2"
+        android:id="@+id/editTextText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:inputType="textEmailAddress" />
+        android:ems="10"
+        android:hint="Masukkan nama"
+        android:inputType="text"
+        android:minHeight="48dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Email" />
 
-
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/editEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:inputType="textEmailAddress" />
+        android:hint="Masukkan Email"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nama Depan" />
+        android:text="Nama Depan                                 Nama Belakang" />
 
-    <EditText
-        android:id="@+id/editFirstName"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nama Depan"
-        android:inputType="textPersonName" />
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_marginTop="8dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nama Belakang" />
+        <EditText
+            android:id="@+id/etNamaDepan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Nama Depan"
+            tools:ignore="TouchTargetSizeCheck" />
 
-    <EditText
-        android:id="@+id/editLastName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:hint="Nama Belakang"
-        android:inputType="textPersonName" />
+        <Space
+            android:layout_width="8dp"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/etNamaBelakang"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Nama Belakang"
+            tools:ignore="TouchTargetSizeCheck" />
+
+    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
@@ -77,7 +93,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:inputType="textPassword" />
+        android:ems="10"
+        android:hint="@string/app_name"
+        android:inputType="textPassword"
+        android:minHeight="48dp" />
 
     <TextView
         android:id="@+id/textView3"
@@ -86,24 +105,28 @@
         android:text="Ketik Ulang Password" />
 
     <EditText
-        android:id="@+id/editPassword2"
+        android:id="@+id/editTextTextPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:inputType="textPassword" />
+        android:ems="10"
+        android:hint="@string/app_name"
+        android:inputType="textPassword"
+        android:minHeight="48dp" />
 
     <Button
         android:id="@+id/btnCancel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Batal"
-        android:textColor="#FFFFFF"
-        android:textColorLink="#E91E63" />
+        android:backgroundTint="#279500"
+        android:text="Kirim"
+        android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/btnSubmit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Kirim" />
+        android:backgroundTint="#FF0000"
+        android:text="Batal"
+        android:textColor="#FFFFFF" />
 
 </LinearLayout>

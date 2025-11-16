@@ -4,50 +4,116 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var etUsername: EditText
+    private lateinit var etEmail: EditText
+    private lateinit var etNamaDepan: EditText
+    private lateinit var etNamaBelakang: EditText
+    private lateinit var etPassword: EditText
+    private lateinit var etConfirmPassword: EditText
+    private lateinit var btnKirim: Button
+    private lateinit var btnBatal: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
 
-        // Hubungkan ke layout
-        val username = findViewById<EditText>(R.id.editText)
-        val email = findViewById<EditText>(R.id.editText)
-        val namaDepan = findViewById<EditText>(R.id.editFirstName)
-        val namaBelakang = findViewById<EditText>(R.id.editLastName)
-        val password = findViewById<EditText>(R.id.editPassword)
-        val konfirmasiPassword = findViewById<EditText>(R.id.editPassword)
-        val btnKirim = findViewById<Button>(R.id.btnCancel)
+        setContentView(R.layout.activity_main)
+
+
+        etUsername = findViewById(R.id.editTextText)
+        etEmail = findViewById(R.id.editEmail)
+        etNamaDepan = findViewById(R.id.etNamaDepan)
+        etNamaBelakang = findViewById(R.id.etNamaBelakang)
+        etPassword = findViewById(R.id.editPassword)
+        etConfirmPassword = findViewById(R.id.editTextTextPassword)
+        btnKirim = findViewById(R.id.btnCancel)
+        btnBatal = findViewById(R.id.btnSubmit)
 
         btnKirim.setOnClickListener {
-            if (username.text.isEmpty() || email.text.isEmpty() ||
-                namaDepan.text.isEmpty() || namaBelakang.text.isEmpty() ||
-                password.text.isEmpty() || konfirmasiPassword.text.isEmpty()
-            ) {
-                Toast.makeText(this, "Semua input harus terisi!", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-
-            if (password.text.toString() != konfirmasiPassword.text.toString()) {
-                Toast.makeText(this, "Password dan Konfirmasi Password tidak sama!", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-
-            Toast.makeText(this, "Registrasi Berhasil!", Toast.LENGTH_SHORT).show()
+            submitForm()
         }
 
+        btnBatal.setOnClickListener {
+            clearFields()
+            Toast.makeText(this, "Form dibersihkan", Toast.LENGTH_SHORT).show()
+        }
     }
-}  insets
-}
+
+    private fun submitForm() {
+        // Ambil value
+        val username = etUsername.text.toString().trim()
+        val email = etEmail.text.toString().trim()
+        val namaDepan = etNamaDepan.text.toString().trim()
+        val namaBelakang = etNamaBelakang.text.toString().trim()
+        val password = etPassword.text.toString()
+        val confirmPassword = etConfirmPassword.text.toString()
+
+        // Reset error sebelumnya
+        etUsername.error = null
+        etEmail.error = null
+        etNamaDepan.error = null
+        etNamaBelakang.error = null
+        etPassword.error = null
+        etConfirmPassword.error = null
+
+        // Validasi sederhana
+        when {
+            username.isEmpty() -> {
+                etUsername.requestFocus()
+                showShort("Isi username terlebih dahulu")
+            }
+            email.isEmpty() -> {
+                etEmail.requestFocus()
+                showShort("Isi email terlebih dahulu")
+            }
+            namaDepan.isEmpty() -> {
+
+                etNamaDepan.requestFocus()
+                showShort("Isi nama depan terlebih dahulu")
+            }
+            namaBelakang.isEmpty() -> {
+
+                etNamaBelakang.requestFocus()
+                showShort("Isi nama belakang terlebih dahulu")
+            }
+            password.isEmpty() -> {
+
+                etPassword.requestFocus()
+                showShort("Isi password terlebih dahulu")
+            }
+            confirmPassword.isEmpty() -> {
+
+                etConfirmPassword.requestFocus()
+                showShort("Konfirmasi password terlebih dahulu")
+            }
+            password != confirmPassword -> {
+
+                etPassword.error = "Password berbeda"
+                etConfirmPassword.error = "Password berbeda"
+                etConfirmPassword.requestFocus()
+                showShort("Password tidak sama")
+            }
+            else -> {
+
+                val namaUser = "$namaDepan $namaBelakang"
+                Toast.makeText(this, "User $namaUser berhasil dibuat.", Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
+    private fun clearFields() {
+        etUsername.text.clear()
+        etEmail.text.clear()
+        etNamaDepan.text.clear()
+        etNamaBelakang.text.clear()
+        etPassword.text.clear()
+        etConfirmPassword.text.clear()
+    }
+
+    private fun showShort(msg: String) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
     }
 }
